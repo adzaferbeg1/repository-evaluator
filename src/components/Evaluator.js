@@ -30,7 +30,7 @@ export default function Evaluator() {
 	const [pullPercentage, setPullPercentage] = useState("0%");
 	const [commitPercentage, setCommitPercentage] = useState("0%");
 
-	const analyzeData = async () => {
+	const analyseData = async () => {
 		if (url === "") {
 			alert("No reposiroty URL provided");
 		} else {
@@ -97,10 +97,10 @@ export default function Evaluator() {
 					<button
 						className="analyze-button"
 						onClick={() => {
-							analyzeData();
+							analyseData();
 						}}
 					>
-						Analyze
+						Analyse
 					</button>
 				</>
 			);
@@ -108,7 +108,7 @@ export default function Evaluator() {
 			return (
 				<div>
 					<p className="analyze-title">
-						You are analyzing {urlTitle} repository
+						You are analysing {urlTitle} repository
 					</p>
 				</div>
 			);
