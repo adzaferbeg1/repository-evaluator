@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./TotalResult.css";
 
 export default function Result({ totalPercentage }) {
-	const [percentage, setPercentage] = useState(0);
+	const [percentage, setPercentage] = useState();
 	const styleRed = { backgroundColor: "pink" };
 	const styleYellow = { backgroundColor: "rgb(223, 223, 41)" };
 	const styleGreen = { backgroundColor: "green", color: "white" };
