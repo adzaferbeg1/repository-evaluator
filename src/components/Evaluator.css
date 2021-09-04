@@ -134,7 +134,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
-	padding-left: 0.5em;
+	padding-left: 1em;
 	border: 2px solid rgb(151, 150, 150);
 	border-radius: 25px;
 }

@@ -39,10 +39,10 @@ export default function Evaluator() {
 			setUrlTitle(urlTitle);
 			const branches = await GitHubApiService.getBranches(urlTitle);
 			setAllBranches(branches);
-			const allBranchCommits = [];
 
 			// GET COMMITS FOR EVERY BRANCH
 
+			const allBranchCommits = [];
 			for (let k = 0; k < branches.length; k++) {
 				allBranchCommits.push([]);
 			}
@@ -75,7 +75,7 @@ export default function Evaluator() {
 				ProgressUtils.calculateCommitProgress(
 					allBranchCommits,
 					branches,
-					pullRequests[0].length
+					pullRequests[2].length
 				)
 			);
 		}
@@ -175,6 +175,8 @@ export default function Evaluator() {
 						setSelectedBranch("No branch selected");
 						setAllBranchCommits([]);
 						setPullRequests([]);
+						setCommitPercentage("0.00%");
+						setPullPercentage("0.00%");
 						setLoadingPulls(true);
 						setLoading(true);
 					}}
@@ -249,12 +251,9 @@ export default function Evaluator() {
 										</h5>
 									</div>
 								) : null}
-								{selectedBranch === "No branch selected" ? (
-									<h5 style={{ color: "blue", fontWeight: "400" }}>
-										SELECT A BRANCH TO ANALYZE
-									</h5>
+								{selectedBranch !== "No branch selected" && loading ? (
+									<h4>Loading data...</h4>
 								) : null}
-								{loading ? <h4>Loading data...</h4> : null}
 							</div>
 						</div>
 						<div className="loaded-data-row">
