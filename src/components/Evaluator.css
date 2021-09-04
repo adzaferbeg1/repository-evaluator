@@ -1,0 +1,187 @@
+* {
+	overflow-x: hidden;
+}
+
+.nav-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: black;
+	height: 50px;
+	text-align: left;
+	padding-left: 2em;
+	padding-top: 0.5em;
+}
+
+.nav-label,
+.nav-list-label {
+	color: white;
+	font-size: 18pt;
+}
+
+.nav-list-label {
+	padding-right: 2em;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.nav-list-label:hover {
+	color: rgb(151, 150, 150);
+	cursor: pointer;
+}
+
+.middle-container {
+	margin-bottom: 10em;
+}
+
+.page-content {
+	border-radius: 25px;
+	background-color: rgb(252, 249, 249);
+	border: 2px solid rgb(151, 150, 150);
+	width: 70%;
+	margin: auto;
+	margin-top: 3em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
+}
+
+.back-svg {
+	font-size: 30pt;
+	position: absolute;
+	left: 0;
+	margin-left: 0.5em;
+	margin-top: 0.5em;
+}
+
+.back-svg:hover {
+	cursor: pointer;
+}
+
+.git-logo {
+	width: 100px;
+	height: 100px;
+	margin-top: 2em;
+}
+
+.repo-link {
+	margin-top: 2em;
+	width: 400px;
+	height: 40px;
+	padding-left: 1em;
+}
+
+.analyze-button {
+	border: 2px solid rgb(151, 150, 150);
+	width: 200px;
+	height: 40px;
+	margin-top: 2em;
+	margin-bottom: 5em;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 10pt;
+}
+
+.analyze-button:hover,
+.analyze-button:focus {
+	background-color: rgb(63, 153, 63);
+	color: white;
+	cursor: pointer;
+}
+
+.analyze-title {
+	font-size: 15pt;
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	background-color: black;
+	color: white;
+	width: 100%;
+	font-size: 8pt;
+	font-weight: 200;
+}
+
+.loaded-data {
+	display: flex;
+	flex-direction: column;
+}
+
+.loaded-data-row {
+	width: 70%;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+.branches-card,
+.pulls-card {
+	width: 30%;
+	text-align: left;
+}
+
+.branches-card,
+.commits-card,
+.pulls-card,
+.results-card {
+	box-shadow: 5px 5px 10px rgb(0 0 0 / 0.2);
+	background-color: rgb(252, 249, 249);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-left: 0.5em;
+	border: 2px solid rgb(151, 150, 150);
+	border-radius: 25px;
+}
+
+.commits-card,
+.results-card {
+	width: 70%;
+	text-align: left;
+	margin-left: 1em;
+}
+
+.branch-name,
+.pull-name,
+.result-name {
+	color: gray;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+.branch-name:hover {
+	color: black;
+	cursor: pointer;
+}
+
+.commits-table {
+	width: 95%;
+	background-color: rgb(219, 218, 218);
+	margin-bottom: 2em;
+}
+
+.commits-table-head {
+	background-color: rgb(252, 249, 249);
+	font-size: 10pt;
+}
+
+td {
+	font-size: 10pt;
+	text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+.progress-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding-right: 1em;
+}
