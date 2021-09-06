@@ -190,6 +190,7 @@ export default function Evaluator() {
 						setPullRequests([]);
 						setCommitPercentage("0.00%");
 						setPullPercentage("0.00%");
+						setDocumentationProvided(false);
 						setLoadingPulls(true);
 						setLoading(true);
 					}}
