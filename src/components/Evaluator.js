@@ -12,6 +12,7 @@ import ProgressBar from "./ProgressBar";
 import ProgressUtils from "../utils/ProgressUtils";
 import TotalResult from "./TotalResult";
 import "./Evaluator.css";
+import { useTokenContext } from "../AppContext";
 
 export default function Evaluator() {
 	const [showInput, setShowInput] = useState(true);
@@ -29,6 +30,7 @@ export default function Evaluator() {
 	const [documentationProvided, setDocumentationProvided] = useState(false);
 	const [pullPercentage, setPullPercentage] = useState("0%");
 	const [commitPercentage, setCommitPercentage] = useState("0%");
+	const { token, setToken } = useTokenContext();
 
 	const analyseData = async () => {
 		if (url === "") {
@@ -37,7 +39,7 @@ export default function Evaluator() {
 			setShowInput(false);
 			const urlTitle = url.replace("https://github.com/", "");
 			setUrlTitle(urlTitle);
-			const branches = await GitHubApiService.getBranches(urlTitle);
+			const branches = await GitHubApiService.getBranches(urlTitle, token);
 			setAllBranches(branches);
 
 			// GET COMMITS FOR EVERY BRANCH
@@ -51,7 +53,8 @@ export default function Evaluator() {
 					const array = await GitHubApiService.getAllCommitsForBranch(
 						urlTitle,
 						branches[j].name,
-						i
+						i,
+						token
 					);
 					if (array.length === 0) break;
 					allBranchCommits[j].push(...array);
@@ -61,11 +64,11 @@ export default function Evaluator() {
 
 			// GET ALL PULL REQUESTS
 
-			const pullsNo = await GitHubApiService.getPullsNo(urlTitle);
+			const pullsNo = await GitHubApiService.getPullsNo(urlTitle, token);
 			pullRequests.push(pullsNo);
-			const openPullsNo = await GitHubApiService.getOpenPullsNo(urlTitle);
+			const openPullsNo = await GitHubApiService.getOpenPullsNo(urlTitle, token);
 			pullRequests.push(openPullsNo);
-			const closedPullsNo = await GitHubApiService.getClosedPullsNo(urlTitle);
+			const closedPullsNo = await GitHubApiService.getClosedPullsNo(urlTitle, token);
 			pullRequests.push(closedPullsNo);
 			setLoadingPulls(false);
 			setPullPercentage(
@@ -92,6 +95,15 @@ export default function Evaluator() {
 						value={url}
 						onChange={(e) => {
 							setUrl(e.target.value);
+						}}
+					/>
+					<input
+						type="text"
+						placeholder="Paste AUTH token here"
+						className="repo-link"
+						value={token}
+						onChange={(e) => {
+							setToken(e.target.value);
 						}}
 					/>
 					<button
@@ -122,7 +134,8 @@ export default function Evaluator() {
 		for (let o = 0; o < allBranchCommits[index].length; o++) {
 			allBranchCommits[index][o] = await GitHubApiService.getCommitData(
 				urlTitle,
-				allBranchCommits[index][o].sha
+				allBranchCommits[index][o].sha,
+				token
 			);
 		}
 		setLoading(false);

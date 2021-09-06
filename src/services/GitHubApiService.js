@@ -1,18 +1,16 @@
 import axios from "axios";
 
-const auth = {
-	auth: {
-		username: `${process.env.REACT_APP_USERNAME}`,
-		password: `${process.env.REACT_APP_TOKEN}`,
-	},
-};
-
 class GitHubApiService {
-	getBranches = async (repo) => {
+	getBranches = async (repo, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" + repo + "/branches",
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
@@ -20,7 +18,7 @@ class GitHubApiService {
 		}
 	};
 
-	getAllCommitsForBranch = async (repo, branch, i) => {
+	getAllCommitsForBranch = async (repo, branch, i, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" +
@@ -30,7 +28,12 @@ class GitHubApiService {
 					"&page=" +
 					i +
 					"&per_page=100",
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
@@ -38,11 +41,16 @@ class GitHubApiService {
 		}
 	};
 
-	getCommitData = async (repo, sha) => {
+	getCommitData = async (repo, sha, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" + repo + "/commits/" + sha,
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
@@ -50,11 +58,16 @@ class GitHubApiService {
 		}
 	};
 
-	getPullsNo = async (repo) => {
+	getPullsNo = async (repo, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" + repo + "/pulls?state=all",
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
@@ -62,11 +75,16 @@ class GitHubApiService {
 		}
 	};
 
-	getOpenPullsNo = async (repo) => {
+	getOpenPullsNo = async (repo, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" + repo + "/pulls?state=open",
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
@@ -74,11 +92,16 @@ class GitHubApiService {
 		}
 	};
 
-	getClosedPullsNo = async (repo) => {
+	getClosedPullsNo = async (repo, token) => {
 		try {
 			const response = await axios.get(
 				"https://api.github.com/repos/" + repo + "/pulls?state=closed",
-				auth
+				{
+					auth: {
+						username: `${process.env.REACT_APP_USERNAME}`,
+						password: token,
+					},
+				}
 			);
 			return response.data;
 		} catch (err) {
