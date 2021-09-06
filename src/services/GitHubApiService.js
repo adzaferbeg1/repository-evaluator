@@ -1,5 +1,11 @@
 import axios from "axios";
-import { auth } from "../Config";
+
+const auth = {
+	auth: {
+		username: `${process.env.REACT_APP_USERNAME}`,
+		password: `${process.env.REACT_APP_TOKEN}`,
+	},
+};
 
 class GitHubApiService {
 	getBranches = async (repo) => {
